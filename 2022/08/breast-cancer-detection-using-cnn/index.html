@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Breast Cancer Detection using CNN",
+  
+  "image": "https://sukeshperla.com/images/Thumbnail/cancer.webp",
+  
+  "datePublished": "2022-08-01T00:00:00Z",
+  "dateModified": "2022-08-01T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Sukesh Perla",
+    
+    "image": "https://sukeshperla.com/images/Profile/profile5.jpg"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/sukeshperla.com\/2022\/08\/breast-cancer-detection-using-cnn\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sukesh Perla | Personal Blog | 2x Kaggle Expert ",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sukeshperla.com/images/Profile/profile5.jpg"
+    }
+    
+  },
+  "description": "CNN using Histopathological Images.\n",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Sukesh Perla">
+<meta name="keywords" content="">
+<meta name="description" content="CNN using Histopathological Images.">
+
+
+<meta property="og:description" content="CNN using Histopathological Images.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Breast Cancer Detection using CNN">
+<meta name="twitter:title" content="Breast Cancer Detection using CNN">
+<meta property="og:url" content="https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/">
+<meta property="twitter:url" content="https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/">
+<meta property="og:site_name" content="Sukesh Perla | Personal Blog | 2x Kaggle Expert ">
+<meta property="og:description" content="CNN using Histopathological Images.">
+<meta name="twitter:description" content="CNN using Histopathological Images.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-08-01T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2022-08-01T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Image Detection">
+    
+  
+  
+    
+      <meta property="article:tag" content="Computer Vision">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://sukeshperla.com/images/Profile/profile5.jpg">
+  <meta property="twitter:image" content="https://sukeshperla.com/images/Profile/profile5.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://sukeshperla.com/images/Thumbnail/cancer.webp">
+  <meta property="twitter:image" content="https://sukeshperla.com/images/Thumbnail/cancer.webp">
+
+
+    <title>Breast Cancer Detection using CNN</title>
+
+    <link rel="icon" href="https://sukeshperla.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://sukeshperla.com/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://sukeshperla.com/" aria-label="Go to homepage">Sukesh Perla | Personal Blog | 2x Kaggle Expert </a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://sukeshperla.com/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://sukeshperla.com/images/Profile/profile5.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://sukeshperla.com/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://sukeshperla.com/images/Profile/profile5.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Sukesh Perla</h4>
+        
+          <h5 class="sidebar-profile-bio">Data nerd working in General Insurance as a Pricing Data Scientist</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sukeshperla.com/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sukeshperla.com/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sukeshperla.com/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Nascent-bot" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/sukeshperla/" target="_blank" rel="noopener" title="Linkedin">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Linkedin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaOut
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Breast Cancer Detection using CNN
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-08-01T00:00:00Z">
+        
+  August 1, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://sukeshperla.com/categories/image-detection">Image Detection</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>CNN using Histopathological Images.</p>
+<p><strong>CONTEXT</strong></p>
+<ul>
+<li><strong>Data Source:</strong> <a href="https://www.kaggle.com/code/nasrulhakim86/breast-cancer-histopathology-images-classification/data">https://www.kaggle.com/code/nasrulhakim86/breast-cancer-histopathology-images-classification/data</a></li>
+<li>The Breast Cancer Histopathological Image Classification (BreakHis) is composed of 9,109 microscopic images of breast tumor tissue collected from 82 patients.</li>
+<li>The images are collected using different magnifying factors (40X, 100X, 200X, and 400X).</li>
+<li>To date, it contains 2,480 benign and 5,429 malignant samples (700X460 pixels, 3-channel RGB, 8-bit depth in each channel, PNG format).</li>
+<li>This database has been built in collaboration with the P&amp;D Laboratory – Pathological Anatomy and Cytopathology, Parana, Brazil (<a href="http://www.prevencaoediagnose.com.br">http://www.prevencaoediagnose.com.br</a>).</li>
+<li>Each image filename stores information about the image itself: method of procedure biopsy, tumor class, tumor type, patient identification, and magnification factor.</li>
+<li>For example, SOBBTA-14-4659-40-001.png is the image 1, at magnification factor 40X, of a benign tumor of type tubular adenoma, original from the slide 14-4659, which was collected by procedure SOB.</li>
+</ul>
+<h3 id="importing-necessary-libraries">Importing Necessary Libraries</h3>
+<pre tabindex="0"><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sklearn
+import os
+import shutil
+import cv2
+from sklearn.model_selection import train_test_split
+from sklearn.utils import resample
+from sklearn.metrics import confusion_matrix, classification_report
+#Importing all the necessary libraries for image processing
+import tensorflow as tf
+from tensorflow.keras.layers import Conv2D, Flatten, Dense, Dropout, MaxPooling2D, BatchNormalization
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.callbacks import EarlyStopping, Callback , ModelCheckpoint
+from tensorflow.keras.metrics import Accuracy,binary_crossentropy, FalsePositives, FalseNegatives, TruePositives, TrueNegatives
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+</code></pre><pre tabindex="0"><code>shutil.rmtree(&#34;../Cancer/&#34;)
+shutil.rmtree(&#34;../Cancer_train/&#34;)
+shutil.rmtree(&#34;../Cancer_test/&#34;)
+shutil.rmtree(&#34;../Cancer_validation/&#34;)
+</code></pre><h3 id="reading-csv">Reading CSV</h3>
+<pre tabindex="0"><code>#Loading the text file
+fold_df = pd.read_csv(&#34;../input/breakhis/Folds.csv&#34;)
+</code></pre><p><strong>Folds.csv</strong></p>
+<ol>
+<li>Folds.csv contains all the information about the patient images.</li>
+<li>Folds.csv consists of the magnifying factor of the image. the exact path where the image is stores.</li>
+<li>So, We can extract useful information from the filename.</li>
+<li>Here Folds.csv plays major role in designing the system.</li>
+</ol>
+<h3 id="defining-the-paths">Defining the Paths</h3>
+<pre tabindex="0"><code>#Defining the paths
+img_path = &#34;./BreaKHis_v1/&#34;
+classes = [&#34;benign&#34;,&#34;malign&#34;]
+
+#Renaming the column filename to path
+fold_df = fold_df.rename(columns = {&#34;filename&#34;:&#34;path&#34;})
+#Printing the head of the file
+fold_df.head(3)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df1.png" alt="df1.png"></p>
+<p><strong>Info:</strong></p>
+<ul>
+<li>From the path column we can extract the exact file name using apply and split functions on the path column.</li>
+<li>And also the class is extracted.</li>
+</ul>
+<p><strong>Creating New Directiory Cancer</strong></p>
+<ul>
+<li>The given data consists of very complex structure of folders where it stores the images.</li>
+<li>The structure as follows:
+<ul>
+<li>BreaKHis_v1
+<ul>
+<li>histology_slides
+<ul>
+<li>breast
+<ul>
+<li><strong>benign</strong>
+<ul>
+<li><strong>SOB</strong>
+<ul>
+<li>Type
+<ul>
+<li><strong>patient_id</strong>
+<ul>
+<li>40x</li>
+<li>100x</li>
+<li>200x</li>
+<li>400x</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>malignant</strong>
+<ul>
+<li><strong>SOB</strong>
+<ul>
+<li>Type
+<ul>
+<li><strong>patient_id</strong>
+<ul>
+<li>40x</li>
+<li>100x</li>
+<li>200x</li>
+<li>400x</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>To make things simple, using the exact path of the images, all the images are moved to the common folder called <strong>Cancer.</strong></li>
+<li>Images are renamed with their class and patient_id.</li>
+</ul>
+<pre tabindex="0"><code>#Creating new directory
+os.makedirs(&#34;../Cancer/&#34;)
+#Moving all the images to one folder
+for p in fold_df[&#39;path&#39;]:
+    src = &#34;../input/breakhis/BreaKHis_v1/&#34; + p
+    dest = &#34;../Cancer/&#34;
+    #saving the files with its corresponding class and patient_id
+    dest = os.path.join(dest,src.split(&#34;/&#34;)[7]+ &#34;_&#34; + src.split(&#34;/&#34;)[-1])
+    shutil.copyfile(src,dest)  
+
+#Checking the len
+len(os.listdir(&#34;../Cancer/&#34;))
+</code></pre><pre tabindex="0"><code>#Creating a new data frame with labels and file names stored in single folder
+fold_df[&#39;file_loc&#39;] = fold_df[&#39;label&#39;] + &#34;_&#34; + fold_df[&#39;filename&#39;]
+#Encoding the class to integer
+fold_df[&#39;class&#39;] = fold_df[&#39;label&#39;].apply(lambda x: 0 if x ==&#39;benign&#39; else 1)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df3.png" alt="df3.png"></p>
+<h3 id="eda">EDA</h3>
+<pre tabindex="0"><code>plt.figure(figsize=(10,6))
+sns.set(font_scale = 1.5)
+sns.set_style(&#34;darkgrid&#34;)
+sns.countplot(fold_df[&#39;label&#39;]);
+plt.xlabel(&#34;Class&#34;)
+plt.title(&#34;No of Patients Benign and Malignant&#34;);
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/plot1.png" alt="plot1.png"></p>
+<ul>
+<li>Data is Highly Imbalanced as this is the case with the real world.</li>
+<li>Medical datas are usually imbalanced because of their nature.</li>
+</ul>
+<h3 id="benign-samples">Benign Samples</h3>
+<pre tabindex="0"><code>benign_df = fold_df[fold_df[&#39;label&#39;] == &#39;benign&#39;]
+malignant_df = fold_df[fold_df[&#39;label&#39;] == &#39;malignant&#39;]
+#Plotting the benign samples
+plt.figure(figsize = (30,10))
+for i in range(0,40):
+    plt.subplot(4,10,i+1)
+    img = cv2.imread(&#34;../Cancer/&#34;+ benign_df[&#39;file_loc&#39;][i],1)
+    plt.imshow(img)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/benign.png" alt="benign.png"></p>
+<h3 id="malignant-samples">Malignant Samples</h3>
+<pre tabindex="0"><code>#Plotting the malignant samples
+images = malignant_df[&#39;file_loc&#39;].values
+plt.figure(figsize = (30,10))
+for i in range(0,40):
+    plt.subplot(4,10,i+1)
+    img = cv2.imread(&#34;../Cancer/&#34;+ images[i],1)
+    plt.imshow(img)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/malignant.png" alt="malignant.png"></p>
+<p><strong>Findings:</strong></p>
+<ul>
+<li>From the above images there is very little to no difference between malignant and benign samples.</li>
+<li>This might be because we are not the pathologists, That&rsquo;s the original purpose of the detection system.</li>
+<li>Thus it makes it easy in the absence of actual pathologists.</li>
+</ul>
+<pre tabindex="0"><code>#Creating a new data frame with the file loc as its index, label and class of the patients as its columns.
+df = pd.DataFrame(os.listdir(&#34;../Cancer/&#34;))
+df = df.rename(columns = {0:&#39;file_loc&#39;})
+df[&#39;label&#39;] = df[&#39;file_loc&#39;].apply(lambda x:x.split(&#34;_&#34;)[0])
+df[&#39;class&#39;] = df[&#39;label&#39;].apply(lambda x: 0 if x ==&#39;benign&#39; else 1)
+df.set_index(&#34;file_loc&#34;,inplace=True)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df4.png" alt="df4.png"></p>
+<ul>
+<li>Using the data frame, the splitting for train, test and validation is done.</li>
+<li>10% is kept aside as the test data, and 10% as validation data.</li>
+<li>80% is taken as the training data.</li>
+</ul>
+<h3 id="data-splitting">Data Splitting</h3>
+<pre tabindex="0"><code>#Performing the splitting
+data_train_and_val, data_test = train_test_split(df, test_size = 0.1, random_state = 47)
+#Traing and val
+data_train, data_val = train_test_split(data_train_and_val, test_size = 0.1, random_state = 47)
+#Print
+print(&#34;Training size :&#34;, data_train.shape)
+print(&#34;Validation size :&#34;, data_val.shape)
+print(&#34;Testing size :&#34;, data_test.shape)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df5.png" alt="df5.png"></p>
+<h3 id="plotting-the-distribution">Plotting the Distribution</h3>
+<pre tabindex="0"><code>#Plotting
+sns.set_style(&#34;darkgrid&#34;)
+plt.figure(figsize = (20,6))
+plt.subplot(1,3,1)
+sns.countplot(data_train[&#39;class&#39;])
+plt.title(&#34;Training set&#34;)
+plt.subplot(1,3,2)
+sns.countplot(data_val[&#39;class&#39;])
+plt.title(&#34;Validation set&#34;)
+plt.subplot(1,3,3)
+sns.countplot(data_test[&#39;class&#39;]);
+plt.title(&#34;Test set&#34;);
+
+#Separating the benign and malignant patients from train data
+train_has_cancer = data_train[data_train[&#39;class&#39;] == 1]
+train_has_no_cancer = data_train[data_train[&#39;class&#39;] == 0]
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/plot2.png" alt="plot2.png"></p>
+<ul>
+<li>Training , Validation and Testing data is pretty imbalanced as this is the case in the real world.</li>
+<li>Here the validation and testing set is left as it is, because it should reflects the real world scenario.</li>
+<li>And the training data is balanced by oversampling the minority class(Benign).</li>
+</ul>
+<h3 id="upsampling-the-minority-class-by-the-size-of-majority-class-with-replacement">Upsampling the minority class by the size of majority class with replacement</h3>
+<pre tabindex="0"><code>train_has_no_cancer_upsample = resample(train_has_no_cancer, n_samples = len(train_has_cancer),random_state = 47, replace = True)
+#Concatenating the upsampled minority class and the majority class
+data_train = pd.concat([train_has_cancer,train_has_no_cancer_upsample])   
+</code></pre><pre tabindex="0"><code>sns.set_style(&#34;darkgrid&#34;)
+plt.figure(figsize = (20,6))
+plt.subplot(1,3,1)
+sns.countplot(data_train[&#39;class&#39;])
+plt.title(&#34;Training set&#34;)
+plt.subplot(1,3,2)
+sns.countplot(data_val[&#39;class&#39;])
+plt.title(&#34;Validation set&#34;)
+plt.subplot(1,3,3)
+sns.countplot(data_test[&#39;class&#39;]);
+plt.title(&#34;Test set&#34;);
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/plot3.png" alt="plot3.png"></p>
+<h3 id="creating-the-directory-structure-for-training--validation-and-testing">Creating the directory structure for Training , Validation and Testing:</h3>
+<ul>
+<li>Earlier all the images where stored in the single directory called Cancer.</li>
+<li>Now we are using Image data generator as part of our algorithm designing.</li>
+<li>Image data generator expects the Images to be in the following structure:
+<ul>
+<li><strong>Train</strong>
+<ul>
+<li>Benign</li>
+<li>Malignant</li>
+</ul>
+</li>
+<li><strong>Validation</strong>
+<ul>
+<li>Benign</li>
+<li>Malignant</li>
+</ul>
+</li>
+<li><strong>Testing</strong>
+<ul>
+<li>Benign</li>
+<li>Malignant</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Above structure is the prerequisite for the Image Data Generator to run.</li>
+</ul>
+<pre tabindex="0"><code>#Creating the directories to store images
+os.makedirs(&#34;../Cancer_train&#34;)
+os.makedirs(&#34;../Cancer_test&#34;)
+os.makedirs(&#34;../Cancer_validation&#34;)
+os.makedirs(&#34;../Cancer_train/benign&#34;)
+os.makedirs(&#34;../Cancer_train/malignant&#34;)
+os.makedirs(&#34;../Cancer_validation/benign&#34;)
+os.makedirs(&#34;../Cancer_validation/malignant&#34;)
+os.makedirs(&#34;../Cancer_test/benign&#34;)
+os.makedirs(&#34;../Cancer_test/malignant&#34;)
+</code></pre><ul>
+<li>Using the above directories and the splitted data frames data_train, data_val, data_test.</li>
+<li>We are moving the images to the corresponding directories based on the class of the image(Benign or Malignant).</li>
+</ul>
+<h3 id="training-data">Training data</h3>
+<pre tabindex="0"><code>i = 1
+for img in data_train.index:
+    if img!=&#34;.DS_Store&#34;:
+        target = df.loc[img,&#39;class&#39;]
+        if target == 1:
+            label = &#39;malignant&#39;
+        else:          
+            label = &#39;benign&#39;      
+        src = os.path.join(&#34;../Cancer/&#34;,img)
+        dest = os.path.join(&#34;../Cancer_train/&#34;,label, &#34;image&#34; + str(i)+&#34;.png&#34;)
+        img1 = np.array(cv2.imread(src))
+        cv2.imwrite(dest,img1)
+        i = i+1
+</code></pre><h3 id="validation-data">Validation data</h3>
+<pre tabindex="0"><code>for img in data_val.index:
+    target = data_val.loc[img,&#39;class&#39;]
+    if target == 1:
+        label = &#39;malignant&#39;
+    else:
+        label = &#39;benign&#39;
+
+    src = os.path.join(&#34;../Cancer/&#34;,img)
+    dest = os.path.join(&#34;../Cancer_validation/&#34;,label,img)
+    shutil.copyfile(src,dest)
+</code></pre><h3 id="testing-data">Testing data</h3>
+<pre tabindex="0"><code>for img in data_test.index:
+    target = data_test.loc[img,&#39;class&#39;]
+    if target == 1:
+        label = &#39;malignant&#39;
+    else:
+        label = &#39;benign&#39;
+
+    src = os.path.join(&#34;../Cancer/&#34;,img)
+    dest = os.path.join(&#34;../Cancer_test/&#34;,label,img)
+    shutil.copyfile(src,dest)
+</code></pre><h3 id="dimension-check">Dimension Check</h3>
+<pre tabindex="0"><code>#Checking their lengths
+print(&#34;Training Data:&#34;)
+print(&#34; &#34;)
+print(&#34;Benign:&#34;,len(os.listdir(&#34;../Cancer_train/benign/&#34;)))
+print(&#34;Malignant::&#34;,len(os.listdir(&#34;../Cancer_train/malignant/&#34;)))
+print(&#34; &#34;)
+print(&#34;Validation Data&#34;)
+print(&#34; &#34;)
+print(&#34;Benign size:&#34;,len(os.listdir(&#34;../Cancer_validation/benign/&#34;)))
+print(&#34;Malignant size :&#34;,len(os.listdir(&#34;../Cancer_validation/malignant/&#34;)))
+print(&#34; &#34;)
+print(&#34;Testing Data:&#34;)
+print(&#34; &#34;)
+print(&#34;Benign size :&#34;,len(os.listdir(&#34;../Cancer_test/benign/&#34;)))
+print(&#34;Malignant size :&#34;,len(os.listdir(&#34;../Cancer_test/malignant/&#34;)))
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df6.png" alt="df6.png"></p>
+<ul>
+<li>Training data is balanced.</li>
+<li>Testing and Validation data is kept as such to reflect the real scenario.</li>
+</ul>
+<h3 id="image-data-generator">Image Data Generator</h3>
+<ul>
+<li>Reference: <a href="https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator">https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator</a></li>
+<li>Generates batches of tensor image data with real-time data augmentation.</li>
+<li>Thus CNN sees new set of images with different variation at each epoch.</li>
+<li>One of the useful methods to prevent the model from Overfitting.</li>
+</ul>
+<pre tabindex="0"><code>#Defining Image Data Generator
+datagen = ImageDataGenerator(
+    rotation_range=20,
+    horizontal_flip=True,
+    vertical_flip=True,
+    rescale=1./255,
+    shear_range=0.2,
+    fill_mode=&#39;nearest&#39;,
+    zoom_range=0.2)
+</code></pre><p>Here the <strong>Image Data Generator</strong> is defined with following functions:</p>
+<ul>
+<li>Random rotation by 20 degrees.</li>
+<li>Horizontal flip.</li>
+<li>Vertical flip.</li>
+<li>Rescale image by its pixel value.</li>
+<li>Randomly Zoom image by 20%.</li>
+<li>Random shear by 20%.</li>
+</ul>
+<p><strong>Flow from Directory</strong></p>
+<ul>
+<li>Earlier Image folders where created as per the prerequisite.</li>
+<li>Here the flow_from_directory will find the number of images and their classes based on the hierarchy.</li>
+<li>Size of the image is set to 128x128.</li>
+<li>Batch size of 32 and class mode of binary(Benign or Malignant).</li>
+</ul>
+<pre tabindex="0"><code>#Setting up the images for image data generator
+train_generation = datagen.flow_from_directory(&#34;../Cancer_train/&#34;,target_size=(128,128),batch_size = 32, class_mode=&#34;binary&#34;)
+val_generation = datagen.flow_from_directory(&#34;../Cancer_validation/&#34;, target_size=(128,128), batch_size=32, class_mode=&#34;binary&#34;)
+</code></pre><ul>
+<li>Found 8796 images belonging to 2 classes.</li>
+<li>Found 712 images belonging to 2 classes.</li>
+</ul>
+<h3 id="cnn-architecture">CNN Architecture</h3>
+<ul>
+<li>CNN architecture is defined using <strong>Conv2D layers and Maxpooling layers.</strong></li>
+<li>Dropout Layers are added to randomly turn off some neurons while training to prevent from overfitting.</li>
+<li>Flatten layer is added at the end to form Dense Layers.</li>
+<li><strong>relu</strong> is used as activation in all the layers and <strong>Sigmoid</strong> as the activation in the output layer.</li>
+</ul>
+<pre tabindex="0"><code>#Defining the base model
+cancer_model = Sequential()
+
+#First Layer
+cancer_model.add(Conv2D(filters = 32, kernel_size = (3,3), input_shape = (128,128,3), activation = &#39;relu&#39;))
+cancer_model.add(MaxPooling2D(pool_size = (2,2)))
+
+#Second Layer
+cancer_model.add(Conv2D(filters = 64, kernel_size = (3,3), padding = &#39;same&#39;,activation = &#39;relu&#39;))
+cancer_model.add(MaxPooling2D(pool_size = (2,2)))
+
+#Third Layer
+cancer_model.add(Conv2D(filters = 128, kernel_size = (3,3), padding = &#39;same&#39;, activation = &#39;relu&#39;))
+cancer_model.add(MaxPooling2D(pool_size = (2,2)))
+cancer_model.add(Dropout(0.4))
+
+#Fourth Layer
+cancer_model.add(Conv2D(filters = 256, kernel_size = (3,3), padding = &#39;same&#39;, activation = &#39;relu&#39;))
+cancer_model.add(MaxPooling2D(pool_size = (2,2)))
+cancer_model.add(Dropout(0.2))
+
+#Flattening the layers
+cancer_model.add(Flatten())
+
+#Adding the dense layer
+cancer_model.add(Dense(256, activation = &#39;relu&#39;))
+cancer_model.add(Dense(128, activation = &#39;relu&#39;))
+cancer_model.add(Dense(1, activation = &#39;sigmoid&#39;))
+
+cancer_model.summary()
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df7.png" alt="df7.png">
+<img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df8.png" alt="df8.png"></p>
+<pre tabindex="0"><code>#Setting the learning rate to reduce gradually over the training period
+lr_schedule = tf.keras.optimizers.schedules.InverseTimeDecay(
+  0.001,
+  decay_steps=20*50,
+  decay_rate=1,
+  staircase=False)
+
+def get_optimizer():
+  return tf.keras.optimizers.Adam(lr_schedule)
+
+#Creating new directory to store the best model
+os.makedirs(&#34;./Best_model&#34;)
+</code></pre><h3 id="model-compilation"><strong>Model Compilation</strong></h3>
+<ul>
+<li>Model is compiled by using binary crossentropy as the loss function and adam optimizer to optimize the weights.</li>
+<li>Early stopping is involved to monitor validation loss inorder to prevent overfitting with patience level = 5</li>
+<li>Modelcheckpoint is used to store the best models for every epoch.</li>
+</ul>
+<pre tabindex="0"><code>#Compiling the model
+cancer_model.compile(loss=&#39;binary_crossentropy&#39;, optimizer = get_optimizer(), metrics = [&#39;accuracy&#39;])
+early_stop = EarlyStopping(monitor=&#39;val_loss&#39;,patience=5)
+checkpoint = ModelCheckpoint(&#34;./Best_model/&#34;,save_best_only=True,)
+</code></pre><h3 id="model-fit">Model Fit</h3>
+<ul>
+<li>Model is fitted using train and validation generators generated using Image DataGenerator.</li>
+<li>Verbose is set to 1 to monitor accuracy and losses.</li>
+<li>Model is trained for 200 epochs.</li>
+<li>early stopping and checkpoint are used as the call backs.</li>
+</ul>
+<pre tabindex="0"><code>#Model is fitted using train and validation generator for 200 epochs
+history = cancer_model.fit(train_generation, validation_data=val_generation, epochs=200 ,
+                 callbacks=[early_stop,checkpoint], verbose = 1)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df9.png" alt="df9.png">
+<img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df10.png" alt="df10.png">
+<img src="https://sukeshperla.com/images/Markdown_Images/Cancer/df11.png" alt="df11.png"></p>
+<h3 id="model-results">Model Results</h3>
+<ul>
+<li>The model is terminated after 19 epochs as it started overfitting.</li>
+<li>The model is terminated by Early stopping.</li>
+<li>The results are promising as the training accuracy is 93% while validation accuracy is 91%.</li>
+</ul>
+<pre tabindex="0"><code>#Getting the accuracy
+acc = history.history[&#39;accuracy&#39;]
+val_acc = history.history[&#39;val_accuracy&#39;]
+#Getting the losses
+loss = history.history[&#39;loss&#39;]
+val_loss = history.history[&#39;val_loss&#39;]
+#No of epochs it trained
+epochs_range = history.epoch
+#Plotting Training and Validation accuracy
+plt.figure(figsize=(16, 6))
+plt.subplot(1, 2, 1)
+plt.plot(epochs_range, acc, label=&#39;Training Accuracy&#39;)
+plt.plot(epochs_range, val_acc, label=&#39;Validation Accuracy&#39;)
+plt.legend(loc=&#39;lower right&#39;)
+plt.title(&#39;Training and Validation Accuracy&#39;)f11
+
+#Plotting Training and Validation Loss
+plt.subplot(1, 2, 2)
+plt.plot(epochs_range, loss, label=&#39;Training Loss&#39;)
+plt.plot(epochs_range, val_loss, label=&#39;Validation Loss&#39;)
+plt.legend(loc=&#39;upper right&#39;)
+plt.title(&#39;Training and Validation Loss&#39;)
+plt.show()
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/plot4.png" alt="plot4.png"></p>
+<h3 id="evaluation-on-test-data">Evaluation on Test Data</h3>
+<pre tabindex="0"><code>#Loading the test data using Image Data Generator
+test_gen = datagen.flow_from_directory(&#34;../Cancer_test/&#34;, target_size=(128,128), class_mode=&#34;binary&#34;, batch_size=1, shuffle=False)
+pred = cancer_model.evaluate(test_gen)
+</code></pre><ul>
+<li>Found 791 images belonging to 2 classes.</li>
+<li>Our CNN model is 91.5% accurate in predicting the cancer using the histopathology Images.</li>
+</ul>
+<h3 id="testing-on-holdout">Testing on Holdout</h3>
+<pre tabindex="0"><code>#Let&#39;s Go ahead and test our model for few Images.
+
+#Array to hold Input Images and their labels
+test = []
+labels = []
+
+#Loading random 10 images
+random_images = np.random.choice(data_test.index,10)
+
+#For loop to read and store images
+for i in random_images:
+    #Finding their class to load from folder
+    label = data_test.loc[i,&#34;class&#34;]
+    labels.append(label)
+    if label == 1:
+        lab = &#34;malignant&#34;
+    else:
+        lab = &#34;benign&#34;
+    #Creating path
+    path = os.path.join(&#34;../Cancer_test/&#34;, lab, i)
+    #reading image
+    img = cv2.imread(path)
+    #resizing to target shape
+    img = cv2.resize(img,(128,128))
+    #Making it an numpy array
+    img = np.array(img)
+    #Appending it to the list
+    test.append(img)
+
+#Making the list as numpy array
+test = np.asarray(test)
+#rescaling it by pixel value
+test = test/255.   
+</code></pre><h3 id="holdout-performance">Holdout Performance</h3>
+<pre tabindex="0"><code>#Performing the prediction
+pred = (cancer_model.predict(test) &gt; 0.5).astype(&#34;int32&#34;)
+#Flattening the list to form single dimensional list
+pred = pred.flatten()
+#Plotting results and actual prediction
+plt.figure(figsize=(20,10))
+plt.suptitle(&#34;Prediction Vs Actual Result&#34;)
+for i in range(0,10):
+    string = &#34;Actual:&#34; + str(labels[i]) + &#34;, Predicted:&#34; + str(pred[i])
+    plt.subplot(2,5,i+1)
+    plt.imshow(test[i])
+    plt.title(string)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/Cancer/pred.png" alt="pred.png"></p>
+<h4 id="deployed-model">Deployed Model</h4>
+<p><a href="https://nascent-bot-cancer-app-myappwelcome-i66wjm.streamlitapp.com">Breast Cancer Detection App - Click here</a></p>
+<h3 id="voila-thats-pretty-much-it">Voila, That&rsquo;s pretty much it.</h3>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://sukeshperla.com/tags/computer-vision/">Computer Vision</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/" data-tooltip="Monkey Pox EDA &amp; Modelling" aria-label="NEXT: Monkey Pox EDA &amp; Modelling">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://sukeshperla.com/2022/01/digit-recognition-using-lenet/" data-tooltip="Digit Recognition using LeNet" aria-label="PREVIOUS: Digit Recognition using LeNet">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/sukeshperla.com\/2022\/08\/breast-cancer-detection-using-cnn\/';
+        
+          this.page.identifier = '\/2022\/08\/breast-cancer-detection-using-cnn\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'Sukesh Perla | Personal Blog';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 Sukesh Perla. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/" data-tooltip="Monkey Pox EDA &amp; Modelling" aria-label="NEXT: Monkey Pox EDA &amp; Modelling">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://sukeshperla.com/2022/01/digit-recognition-using-lenet/" data-tooltip="Digit Recognition using LeNet" aria-label="PREVIOUS: Digit Recognition using LeNet">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fsukeshperla.com%2F2022%2F08%2Fbreast-cancer-detection-using-cnn%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsukeshperla.com%2F2022%2F08%2Fbreast-cancer-detection-using-cnn%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://sukeshperla.com/images/Profile/profile5.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Sukesh Perla</h4>
+    
+      <div id="about-card-bio">Data nerd working in General Insurance as a Pricing Data Scientist</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Aviva GI
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Dublin, Ireland
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://sukeshperla.com/images/Profile/cover1.avif');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://sukeshperla.com/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
