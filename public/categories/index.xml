@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Sukesh Perla | Personal Blog | 2x Kaggle Expert </title>
+    <link>https://sukeshperla.com/categories/</link>
+    <description>Recent content in Categories on Sukesh Perla | Personal Blog | 2x Kaggle Expert </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://sukeshperla.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Personal story</title>
+      <link>https://sukeshperla.com/categories/personal-story/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/categories/personal-story/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Visualisation</title>
+      <link>https://sukeshperla.com/categories/visualisation/</link>
+      <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/categories/visualisation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Packages</title>
+      <link>https://sukeshperla.com/categories/packages/</link>
+      <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/categories/packages/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Image Detection</title>
+      <link>https://sukeshperla.com/categories/image-detection/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/categories/image-detection/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

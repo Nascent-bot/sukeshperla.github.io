@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Monkey Pox EDA \u0026 Modelling",
+  
+  "image": "https://sukeshperla.com/images/Thumbnail/pox.webp",
+  
+  "datePublished": "2023-09-01T00:00:00Z",
+  "dateModified": "2023-09-01T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Sukesh Perla",
+    
+    "image": "https://sukeshperla.com/images/Profile/profile5.jpg"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/sukeshperla.com\/2023\/09\/monkey-pox-eda-modelling\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sukesh Perla | Personal Blog | 2x Kaggle Expert ",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sukeshperla.com/images/Profile/profile5.jpg"
+    }
+    
+  },
+  "description": "Data and Geo analysis on virulent Monkey Pox virus.\n",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Sukesh Perla">
+<meta name="keywords" content="">
+<meta name="description" content="Data and Geo analysis on virulent Monkey Pox virus.">
+
+
+<meta property="og:description" content="Data and Geo analysis on virulent Monkey Pox virus.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monkey Pox EDA &amp; Modelling">
+<meta name="twitter:title" content="Monkey Pox EDA &amp; Modelling">
+<meta property="og:url" content="https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/">
+<meta property="twitter:url" content="https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/">
+<meta property="og:site_name" content="Sukesh Perla | Personal Blog | 2x Kaggle Expert ">
+<meta property="og:description" content="Data and Geo analysis on virulent Monkey Pox virus.">
+<meta name="twitter:description" content="Data and Geo analysis on virulent Monkey Pox virus.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2023-09-01T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-09-01T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Visualisation">
+    
+  
+  
+    
+      <meta property="article:tag" content="Data Analysis">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://sukeshperla.com/images/Profile/profile5.jpg">
+  <meta property="twitter:image" content="https://sukeshperla.com/images/Profile/profile5.jpg">
+
+
+
+
+
+  <meta property="og:image" content="https://sukeshperla.com/images/Thumbnail/pox.webp">
+  <meta property="twitter:image" content="https://sukeshperla.com/images/Thumbnail/pox.webp">
+
+
+    <title>Monkey Pox EDA &amp; Modelling</title>
+
+    <link rel="icon" href="https://sukeshperla.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://sukeshperla.com/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://sukeshperla.com/" aria-label="Go to homepage">Sukesh Perla | Personal Blog | 2x Kaggle Expert </a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://sukeshperla.com/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://sukeshperla.com/images/Profile/profile5.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://sukeshperla.com/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://sukeshperla.com/images/Profile/profile5.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Sukesh Perla</h4>
+        
+          <h5 class="sidebar-profile-bio">Data nerd working in General Insurance as a Pricing Data Scientist</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sukeshperla.com/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sukeshperla.com/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://sukeshperla.com/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Nascent-bot" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/sukeshperla/" target="_blank" rel="noopener" title="Linkedin">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Linkedin</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaOut
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Monkey Pox EDA &amp; Modelling
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-09-01T00:00:00Z">
+        
+  September 1, 2023
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://sukeshperla.com/categories/visualisation">Visualisation</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>Data and Geo analysis on virulent Monkey Pox virus.</p>
+<p><strong>Context</strong></p>
+<ul>
+<li>Monkeypox was first identified as a distinct illness in 1958 among laboratory monkeys in Copenhagen, Denmark</li>
+<li>The first documented cases in humans was in 1970, in six unvaccinated children during the smallpox eradication efforts.</li>
+<li>From 1981 to 1986, over 300 cases of human monkeypox were reported in the DRC, the majority being due to contact with animals.</li>
+<li>On 31 July 2022, the first death from monkeypox was recorded in India, a 22-year-old man who returned from the UAE died.</li>
+<li>src: <a href="https://en.wikipedia.org/wiki/Monkeypox#History">https://en.wikipedia.org/wiki/Monkeypox#History</a></li>
+</ul>
+<p><strong>AIM</strong></p>
+<ul>
+<li>This notebook focuses extensively on Data Analysis and Statistical modelling of Monkey pox cases that outbreak in 2022.</li>
+</ul>
+<h3 id="importing-necessary-libraries">Importing Necessary Libraries</h3>
+<pre tabindex="0"><code>import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly_express as px
+from prophet import Prophet
+import warnings
+warnings.filterwarnings(&#34;ignore&#34;)
+</code></pre><h3 id="reading-csv">Reading CSV</h3>
+<pre tabindex="0"><code>cases_ww = pd.read_csv(&#34;../input/monkeypox-dataset-daily-updated/Monkey_Pox_Cases_Worldwide.csv&#34;,index_col=&#34;Country&#34;)
+daily_case_ww = pd.read_csv(&#34;../input/monkeypox-dataset-daily-updated/Daily_Country_Wise_Confirmed_Cases.csv&#34;,index_col=&#34;Country&#34;)
+case_timeline = pd.read_csv(&#34;../input/monkeypox-dataset-daily-updated/Worldwide_Case_Detection_Timeline.csv&#34;, index_col=&#34;Date_confirmation&#34;)
+</code></pre><h3 id="top-5-countries-with-high-number-of-monkey-pox-cases">Top 5 Countries with High number of Monkey Pox Cases.</h3>
+<pre tabindex="0"><code>cases_ww.sort_values(by=&#34;Confirmed_Cases&#34;,ascending=False )[[&#34;Confirmed_Cases&#34;]][:5]
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/table1.png" alt="table1.png"></p>
+<h3 id="top-5-countries-with-high-hospitalization">Top 5 Countries with high Hospitalization</h3>
+<pre tabindex="0"><code>cases_ww.sort_values(by=&#34;Hospitalized&#34;,ascending=False )[[&#34;Confirmed_Cases&#34;,&#34;Hospitalized&#34;]][:5]
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/table2.png" alt="table2.png"></p>
+<h3 id="top-3-countries-with-high-suspected-cases">Top 3 Countries with High Suspected Cases</h3>
+<pre tabindex="0"><code>cases_ww.sort_values(by=&#34;Suspected_Cases&#34;,ascending=False)[:3][[&#34;Confirmed_Cases&#34;,&#34;Suspected_Cases&#34;]]
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/table3.png" alt="table3.png"></p>
+<ul>
+<li>Republic of Congo has highest number of suspected cases(i.e Not yet confirmed).</li>
+<li>Congo has more suspected cases than confirmed cases, might be the delay in the chain of testing.</li>
+<li>Nigeria and Cameroon also has more suspected cases than confirmed</li>
+</ul>
+<h3 id="when-was-the-first-case-identified">When was the first case Identified?</h3>
+<pre tabindex="0"><code>#Extracting only the country column
+case_timeline = pd.DataFrame(case_timeline[[&#34;Country&#34;]].drop_duplicates())
+print(&#34;The first case was identified on: &#34;,case_timeline.index[1])
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/text1.png" alt="text1.png"></p>
+<h3 id="when-was-the-first-case-in-united-states-was-identified">When was the first case in United States was Identified?</h3>
+<pre tabindex="0"><code>date = case_timeline[case_timeline[&#34;Country&#34;] == &#34;United States&#34;].index[0]
+print(&#34;The first in USA was identified on:&#34;,date,&#34;approximately after 3 months of the first case in Nigeria, Monkey Pox is growing exponentially in USA.&#34;)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/text2.png" alt="text2.png"></p>
+<h2 id="what-proportion-of-people-with-travel-history-is-confirmed-with-monkey-pox-in-usa">What Proportion of people with travel history is confirmed with Monkey Pox in USA</h2>
+<pre tabindex="0"><code>x = (cases_ww[&#34;Travel_History_Yes&#34;] / cases_ww[&#34;Confirmed_Cases&#34;]).loc[&#34;United States&#34;]*100
+print(round(x,2),&#34;% of people&#34;)
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/text3.png" alt="text3.png"></p>
+<p>##EDA</p>
+<pre tabindex="0"><code>plt.figure(figsize=(15,15))
+sns.set_style(&#34;darkgrid&#34;)
+
+#Top 5 Countries with confirmed cases
+plt.subplot(2,2,1)
+top_confirm = cases_ww.sort_values(by=&#34;Confirmed_Cases&#34;,ascending=False )[:5]
+sns.barplot( top_confirm.index, top_confirm[&#34;Confirmed_Cases&#34;],);
+plt.title(&#34;Countries with High Number of Cases&#34;,fontdict={&#39;fontsize&#39;: 20,});
+plt.ylabel(&#34;No of Cases&#34;);
+
+
+#Top 5 Countries with High Hospitalization
+plt.subplot(2,2,2)
+case_hospitol = cases_ww.sort_values(by=&#34;Hospitalized&#34;,ascending=False )[[&#34;Confirmed_Cases&#34;,&#34;Hospitalized&#34;]][:5]
+sns.barplot( case_hospitol.index, case_hospitol[&#34;Hospitalized&#34;],);
+plt.title(&#34;Countries with High Hospitalization&#34;,fontdict={&#39;fontsize&#39;: 20,});
+plt.ylabel(&#34;No of Hospitalizations&#34;);
+
+
+#Top 5 Countries with confirmed cases
+plt.subplot(2,2,3)
+sns.barplot(top_confirm.index,top_confirm[&#34;Hospitalized&#34;]);
+plt.title(&#34;Hospitalization in High Cases Countries&#34;,fontdict={&#39;fontsize&#39;: 20,});
+plt.ylabel(&#34;Hospitalization&#34;);
+
+
+#Top 03 Countries with highest suspected cases
+plt.subplot(2,2,4)
+sus_case = cases_ww.sort_values(by=&#34;Suspected_Cases&#34;,ascending=False)[:3][[&#34;Suspected_Cases&#34;]]
+sns.barplot( sus_case.index, sus_case[&#34;Suspected_Cases&#34;],);
+plt.title(&#34;High Suspected Cases Countries&#34;,fontdict={&#39;fontsize&#39;: 20,});
+plt.ylabel(&#34;No of Suspected Cases&#34;);
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/plot1.png" alt="plot1.png"></p>
+<h1 id="case-trend-in-top-4-high-cases-countries">Case Trend in Top 4 High Cases Countries</h1>
+<pre tabindex="0"><code>plt.figure(figsize=(15,15))
+#USA
+plt.subplot(2,2,1)
+daily_case_ww.iloc[8].plot(kind = &#34;line&#34;,ls= &#34;--&#34;, color = &#39;black&#39;)
+plt.title(&#34;United States&#34;);
+plt.xlabel(&#34;Date&#34;)
+plt.ylabel(&#34;Cases&#34;);
+
+#Spain
+plt.subplot(2,2,2)
+daily_case_ww.iloc[7].plot(kind = &#34;line&#34;, ls= &#34;--&#34;, color = &#34;red&#34;)
+plt.title(&#34;Spain&#34;);
+
+#Germany
+plt.subplot(2,2,3)
+daily_case_ww.iloc[11].plot(ls=&#34;--&#34;,color = &#34;green&#34;)
+plt.title(&#34;Germany&#34;);
+
+#England
+plt.subplot(2,2,4)
+daily_case_ww.iloc[4].plot(ls=&#34;--&#34;,color = &#34;orange&#34;)
+plt.title(&#34;England&#34;);
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/plot2.png" alt="plot2.png"></p>
+<h3 id="total-confirmed-cases-in-different-continents">Total Confirmed Cases in different Continents</h3>
+<pre tabindex="0"><code>fig = px.choropleth(cases_ww,locations= cases_ww.index, color_continuous_scale=&#34;Viridis&#34;, scope= &#34;africa&#34;,
+                    locationmode=&#34;country names&#34;, color=&#34;Confirmed_Cases&#34;, title=&#34;Africa&#34;)
+fig.show()
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/map1.png" alt="map1.png"></p>
+<pre tabindex="0"><code>fig = px.choropleth(cases_ww,locations= cases_ww.index, color_continuous_scale=&#34;Viridis&#34;, scope= &#34;asia&#34;,
+                    locationmode=&#34;country names&#34;, color=&#34;Confirmed_Cases&#34;, title=&#34;Asia&#34;)
+fig.show()
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/map2.png" alt="map2.png"></p>
+<pre tabindex="0"><code>fig = px.choropleth(cases_ww,locations= cases_ww.index, color_continuous_scale=&#34;Viridis&#34;, scope= &#34;north america&#34;,
+                    locationmode=&#34;country names&#34;, color=&#34;Confirmed_Cases&#34;, title=&#34;North America&#34;)
+fig.show()
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/map3.png" alt="map3.png"></p>
+<h2 id="statistical-modelling">Statistical Modelling</h2>
+<p><strong>Prophet Model</strong></p>
+<ul>
+<li>Prophet was designed by Facebook to perform time series modelling.</li>
+<li>More info can be found at: <a href="https://peerj.com/preprints/3190.pdf">https://peerj.com/preprints/3190.pdf</a>.</li>
+</ul>
+<pre tabindex="0"><code>#Extracting USA and removing the before dates of the first Monkey Pox Case
+daily_cases_USA = daily_case_ww.loc[&#34;United States&#34;]
+daily_cases_USA = pd.DataFrame(daily_cases_USA[daily_cases_USA!=0])
+#Creating the data frame according to the algorithm instructions.
+data = {&#39;ds&#39;:pd.to_datetime(daily_cases_USA.index), &#39;y&#39;:daily_cases_USA[&#34;United States&#34;].values}
+df = pd.DataFrame(data)
+df.head()
+</code></pre><pre tabindex="0"><code>#plotting
+daily_cases_USA.plot(figsize=(14,8), color = &#34;green&#34;, ls = &#34;-&#34;);
+plt.title(&#34;Daily Confirmed Cases in USA&#34;);
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/actual.png" alt="actual.png"></p>
+<pre tabindex="0"><code>#Defining the Prophet Model
+m = Prophet()
+#Fitting the data
+m.fit(df)
+#Making predictions for next 10 future time stamps
+future = m.make_future_dataframe(periods=10)
+forecast = m.predict(future)
+</code></pre><h3 id="plotting-forecast">Plotting Forecast</h3>
+<pre tabindex="0"><code>plt.figure(figsize=(14,8))
+m.plot(forecast)
+plt.title(&#34;Forecast into Future&#34;);
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/model1.png" alt="model1.png"></p>
+<h3 id="plotting-trend-components">Plotting Trend Components</h3>
+<pre tabindex="0"><code>m.plot_components(forecast);
+</code></pre><p><img src="https://sukeshperla.com/images/Markdown_Images/pox/model2.png" alt="model2.png"></p>
+<h2 id="thank-you">Thank you.</h2>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://sukeshperla.com/tags/data-analysis/">Data Analysis</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://sukeshperla.com/2023/11/the-mystic-h1b-decoded/" data-tooltip="The Mystic H1B Decoded" aria-label="NEXT: The Mystic H1B Decoded">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/" data-tooltip="Breast Cancer Detection using CNN" aria-label="PREVIOUS: Breast Cancer Detection using CNN">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/sukeshperla.com\/2023\/09\/monkey-pox-eda-modelling\/';
+        
+          this.page.identifier = '\/2023\/09\/monkey-pox-eda-modelling\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'Sukesh Perla | Personal Blog';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 Sukesh Perla. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://sukeshperla.com/2023/11/the-mystic-h1b-decoded/" data-tooltip="The Mystic H1B Decoded" aria-label="NEXT: The Mystic H1B Decoded">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/" data-tooltip="Breast Cancer Detection using CNN" aria-label="PREVIOUS: Breast Cancer Detection using CNN">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fsukeshperla.com%2F2023%2F09%2Fmonkey-pox-eda-modelling%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsukeshperla.com%2F2023%2F09%2Fmonkey-pox-eda-modelling%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://sukeshperla.com/images/Profile/profile5.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Sukesh Perla</h4>
+    
+      <div id="about-card-bio">Data nerd working in General Insurance as a Pricing Data Scientist</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Aviva GI
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Dublin, Ireland
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://sukeshperla.com/images/Profile/cover1.avif');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://sukeshperla.com/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

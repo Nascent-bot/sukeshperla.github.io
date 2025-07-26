@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sukesh Perla | Personal Blog | 2x Kaggle Expert </title>
+    <link>https://sukeshperla.com/posts/</link>
+    <description>Recent content in Posts on Sukesh Perla | Personal Blog | 2x Kaggle Expert </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://sukeshperla.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome to my personal blog</title>
+      <link>https://sukeshperla.com/2024/03/welcome-to-my-personal-blog/</link>
+      <pubDate>Fri, 08 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2024/03/welcome-to-my-personal-blog/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Hello, I am Sukesh😎&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Geo Spatial Analysis</title>
+      <link>https://sukeshperla.com/2024/03/geo-spatial-analysis/</link>
+      <pubDate>Thu, 07 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2024/03/geo-spatial-analysis/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Why Geo based analysis is good!&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Say Hi to faster processing with Pandas</title>
+      <link>https://sukeshperla.com/2024/02/say-hi-to-faster-processing-with-pandas/</link>
+      <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2024/02/say-hi-to-faster-processing-with-pandas/</guid>
+      <description>&lt;p&gt;Unlock faster processing in Pandas.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My Journey to Ireland</title>
+      <link>https://sukeshperla.com/2024/01/my-journey-to-ireland/</link>
+      <pubDate>Fri, 19 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2024/01/my-journey-to-ireland/</guid>
+      <description>&lt;p&gt;Your life is sum of your experiences.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Data Science Salary Analysis</title>
+      <link>https://sukeshperla.com/2024/01/data-science-salary-analysis/</link>
+      <pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2024/01/data-science-salary-analysis/</guid>
+      <description>&lt;p&gt;Deep dive into Data Science salaries across the world.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Mystic H1B Decoded</title>
+      <link>https://sukeshperla.com/2023/11/the-mystic-h1b-decoded/</link>
+      <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2023/11/the-mystic-h1b-decoded/</guid>
+      <description>&lt;p&gt;Deep dive into H1B Visa Analysis.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Monkey Pox EDA &amp; Modelling</title>
+      <link>https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/</link>
+      <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2023/09/monkey-pox-eda-modelling/</guid>
+      <description>&lt;p&gt;Data and Geo analysis on virulent Monkey Pox virus.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Breast Cancer Detection using CNN</title>
+      <link>https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2022/08/breast-cancer-detection-using-cnn/</guid>
+      <description>&lt;p&gt;CNN using Histopathological Images.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Digit Recognition using LeNet</title>
+      <link>https://sukeshperla.com/2022/01/digit-recognition-using-lenet/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2022/01/digit-recognition-using-lenet/</guid>
+      <description>&lt;p&gt;Some Cool Convolutional Neural Network in Action.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Covid 19 Data Analysis - India</title>
+      <link>https://sukeshperla.com/2020/01/covid-19-data-analysis-india/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://sukeshperla.com/2020/01/covid-19-data-analysis-india/</guid>
+      <description>&lt;p&gt;Key insights into how rampant the covid was in India.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
